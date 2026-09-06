@@ -1,6 +1,6 @@
 # 统计学-Python · 个人学习仓库
 
-> 课程：**统计学-Python** ｜ 姓名：**yihan** ｜ 学号：P251012217 ｜ GitHub：yuan-626 ｜ 仓库公开可访问
+> 课程：**统计学-Python** ｜ 姓名：**马元元** ｜ 学号：P251012217 ｜ GitHub：yuan-626 ｜ 仓库公开可访问
 
 ![课程](https://img.shields.io/badge/课程-统计学Python-4f46e5)
 
@@ -266,7 +266,7 @@ git log --oneline       # 看提交历史
 
 ## 十一、作业提交信息
 
-- **姓名**：yihan
+- **姓名**：马元元
 - **学号**：P251012217
 - **GitHub 仓库链接**：[htbantps://github.com/yuan-626/my-first-repo](https://github.com/yuan-626/my-first-repo)
 - **项目级 Skill 路径**：`.workbuddy/skills/concept-learning-material/SKILL.md`
