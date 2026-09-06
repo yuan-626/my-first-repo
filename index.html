@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>my-first-repo · 仓库文件索引</title>
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --primary-dark: #4338ca;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --bg: #f9fafb;
+      --card: #ffffff;
+      --border: #e5e7eb;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'PingFang SC', 'Microsoft YaHei', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 28px 20px 60px;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .hero {
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      color: #fff;
+      padding: 30px 34px;
+      border-radius: 16px;
+      margin-bottom: 26px;
+      box-shadow: 0 10px 30px rgba(79,70,229,.2);
+    }
+    .hero h1 { margin: 0 0 6px; font-size: 1.75em; display: flex; align-items: center; gap: 10px; }
+    .hero p { margin: 0; opacity: .93; font-size: .95em; }
+    .hero-stats { display: flex; gap: 22px; margin-top: 16px; flex-wrap: wrap; }
+    .stat { background: rgba(255,255,255,.16); padding: 6px 14px; border-radius: 10px; font-size: .88em; backdrop-filter: blur(6px); }
+    .stat b { font-size: 1.15em; }
+
+    .toolbar { display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; align-items: center; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 9px 18px; border-radius: 10px; text-decoration: none;
+      font-size: .92em; font-weight: 500; transition: all .18s;
+      border: 1px solid transparent;
+    }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
+    .btn-outline { background: #fff; color: var(--text); border-color: var(--border); }
+    .btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+
+    .search {
+      flex: 1; min-width: 200px; padding: 9px 14px;
+      border: 1px solid var(--border); border-radius: 10px;
+      font-size: .92em; outline: none; font-family: inherit;
+    }
+    .search:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(79,70,229,.1); }
+
+    .section-title {
+      font-size: 1.15em; font-weight: 600; margin: 26px 0 12px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .section-title .count {
+      background: #eef2ff; color: var(--primary);
+      padding: 2px 9px; border-radius: 999px; font-size: .8em; font-weight: 600;
+    }
+
+    .file-list { display: flex; flex-direction: column; gap: 9px; }
+    .file-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 14px 18px;
+      display: flex; align-items: center; gap: 14px;
+      text-decoration: none; color: inherit;
+      transition: all .18s;
+    }
+    .file-card:hover {
+      border-color: var(--primary);
+      transform: translateX(3px);
+      box-shadow: 0 4px 14px rgba(79,70,229,.1);
+    }
+    .file-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.25em; flex-shrink: 0;
+    }
+    .icon-md { background: #eef2ff; }
+    .icon-html { background: #fff7ed; }
+    .icon-cfg { background: #f3f4f6; }
+    .icon-skill { background: #fdf4ff; }
+
+    .file-main { flex: 1; min-width: 0; }
+    .file-name { font-weight: 600; font-size: .98em; margin-bottom: 3px; word-break: break-all; }
+    .file-desc { font-size: .85em; color: var(--muted); }
+    .file-meta { text-align: right; font-size: .8em; color: var(--muted); flex-shrink: 0; }
+    .file-meta .size { display: block; font-weight: 600; color: var(--text); }
+    .file-meta .lines { display: block; margin-top: 2px; }
+
+    .tree {
+      background: #1f2937; color: #e5e7eb;
+      padding: 20px 24px; border-radius: 12px;
+      font-family: 'JetBrains Mono', 'Cascadia Code', Consolas, monospace;
+      font-size: .85em; line-height: 1.85; overflow-x: auto;
+      margin-bottom: 8px;
+    }
+    .tree .dir { color: #fbbf24; }
+    .tree .cmt { color: #6b7280; }
+    .tree .file { color: #93c5fd; }
+
+    .empty { text-align: center; padding: 40px; color: var(--muted); }
+
+    footer {
+      margin-top: 40px; padding-top: 20px;
+      border-top: 1px solid var(--border);
+      text-align: center; font-size: .85em; color: var(--muted);
+    }
+    footer a { color: var(--primary); text-decoration: none; }
+
+    @media (max-width: 640px) {
+      .file-card { flex-wrap: wrap; }
+      .file-meta { text-align: left; width: 100%; padding-left: 54px; }
+      .hero-stats { gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+    <h1>📦 my-first-repo</h1>
+    <p>统计学-Python · 个人学习仓库 ｜ yihan ｜ GitHub yuan-626</p>
+    <div class="hero-stats">
+      <span class="stat">📄 <b>17</b> 个文件</span>
+      <span class="stat">📁 <b>6</b> 个目录</span>
+      <span class="stat">📊 <b>~72 KB</b></span>
+      <span class="stat">🌿 main</span>
+    </div>
+  </div>
+
+  <div class="toolbar">
+    <input type="text" class="search" id="search" placeholder="🔍 搜索文件名或描述…" />
+    <a class="btn btn-primary" href="https://github.com/yuan-626/my-first-repo" target="_blank">
+      ⭐ 打开 GitHub 仓库
+    </a>
+    <a class="btn btn-outline" href="https://github.com/yuan-626/my-first-repo/archive/refs/heads/main.zip" target="_blank">
+      ⬇️ 下载 ZIP
+    </a>
+  </div>
+
+  <div class="section-title">🌳 目录结构 <span class="count">tree</span></div>
+  <div class="tree">
+my-first-repo/
+├── <span class="dir">.workbuddy/</span>
+│   └── <span class="dir">skills/</span>
+│       └── <span class="dir">concept-learning-material/</span>
+│           └── <span class="file">SKILL.md</span>          <span class="cmt">← 项目级 Skill（AI 作业核心产出）</span>
+├── <span class="dir">learning-materials/</span>
+│   ├── <span class="file">agent.html</span>                <span class="cmt">← 概念一：Agent</span>
+│   ├── <span class="file">llm-context.html</span>          <span class="cmt">← 概念二：大模型的上下文</span>
+│   ├── <span class="file">skill.html</span>                <span class="cmt">← 概念三：Skill</span>
+│   ├── <span class="file">concept-relationship.md</span>   <span class="cmt">← 三者关系（Markdown 版）</span>
+│   └── <span class="file">concept-relationship.html</span> <span class="cmt">← 三者关系（网页版）</span>
+├── <span class="dir">01-统计学基础/</span>          <span class="cmt">← 描述统计、概率基础、常用分布族</span>
+├── <span class="dir">02-Python 数据处理/</span>     <span class="cmt">← NumPy / pandas 数据清洗、可视化</span>
+├── <span class="dir">03-统计建模/</span>            <span class="cmt">← 推断统计、回归、假设检验、GLM 入门</span>
+├── <span class="dir">04-综合项目/</span>            <span class="cmt">← 期末综合数据分析项目</span>
+├── <span class="dir">notebooks/</span>              <span class="cmt">← Jupyter 实验记录</span>
+├── <span class="dir">docs/</span>                  <span class="cmt">← 实验报告（含报告模板）</span>
+├── <span class="file">README.md</span>                 <span class="cmt">← 仓库主文档</span>
+├── <span class="file">index.html</span>                <span class="cmt">← 仓库文件索引页（本页）</span>
+├── <span class="file">concept-relationship.md</span>   <span class="cmt">← 关系说明（根目录兼容入口）</span>
+├── <span class="file">requirements.txt</span>
+└── <span class="file">.gitignore</span>
+  </div>
+
+  <div class="section-title">📄 全部文件 <span class="count" id="fileCount">17</span></div>
+  <div class="file-list" id="fileList"></div>
+  <div class="empty" id="emptyState" style="display:none;">没有匹配的文件 🔍</div>
+
+  <footer>
+    本页面由 WorkBuddy 生成 · 数据同步自
+    <a href="https://github.com/yuan-626/my-first-repo" target="_blank">github.com/yuan-626/my-first-repo</a>
+    <br />最后更新：2026-09-06
+  </footer>
+
+  <script>
+    var GH = 'https://github.com/yuan-626/my-first-repo/blob/main/';
+
+    var FILES = [
+      { p: 'README.md', d: '仓库主文档：仓库用途、目录结构、Skill 说明、AI 核查记录、资料来源表、作业提交信息', s: '15.3 KB', l: 292, t: 'md' },
+      { p: 'index.html', d: '仓库文件索引页（即本页）：目录树 + 全部文件卡片 + 实时搜索，浏览器直接打开', s: '12.3 KB', l: 254, t: 'html' },
+      { p: '.workbuddy/skills/concept-learning-material/SKILL.md', d: '项目级 Skill：给定概念名生成结构化学习资料（HTML 单文件）', s: '4.6 KB', l: 97, t: 'skill' },
+      { p: 'learning-materials/agent.html', d: '概念学习资料 · Agent（智能体）：以"决策权在代码里还是在模型里"为分界判据', s: '8.5 KB', l: 130, t: 'html' },
+      { p: 'learning-materials/llm-context.html', d: '概念学习资料 · 大模型的上下文：一次性有限工作台面，区分溢出与腐烂', s: '8.4 KB', l: 145, t: 'html' },
+      { p: 'learning-materials/skill.html', d: '概念学习资料 · Skill：渐进式披露三层结构，及与提示词、MCP 的分工', s: '7.7 KB', l: 138, t: 'html' },
+      { p: 'learning-materials/concept-relationship.html', d: '三者关系说明 · 网页版（自包含，含内嵌 SVG 关系图）', s: '8.4 KB', l: 158, t: 'html' },
+      { p: 'learning-materials/concept-relationship.md', d: '三者关系说明 · Markdown 版（含 Mermaid 图，便于 GitHub 直接阅读）', s: '5.5 KB', l: 108, t: 'md' },
+      { p: 'concept-relationship.md', d: '关系说明的根目录兼容入口（与 learning-materials 版内容一致）', s: '4.4 KB', l: 78, t: 'md' },
+      { p: 'docs/README.md', d: '实验报告目录说明与报告模板', s: '1.2 KB', l: 55, t: 'md' },
+      { p: 'notebooks/README.md', d: 'Jupyter 实验记录（跨章节零散练习）', s: '590 B', l: 22, t: 'md' },
+      { p: '01-统计学基础/README.md', d: '第一章：描述统计、概率基础、常用分布族', s: '569 B', l: 20, t: 'md' },
+      { p: '02-Python 数据处理/README.md', d: '第二章：NumPy / pandas 数据清洗、可视化', s: '618 B', l: 21, t: 'md' },
+      { p: '03-统计建模/README.md', d: '第三章：推断统计、回归、假设检验、GLM 入门', s: '656 B', l: 22, t: 'md' },
+      { p: '04-综合项目/README.md', d: '第四章：期末综合数据分析项目', s: '650 B', l: 19, t: 'md' },
+      { p: 'requirements.txt', d: '课程依赖：numpy / pandas / scipy / matplotlib / statsmodels / jupyter 等', s: '768 B', l: 33, t: 'cfg' },
+      { p: '.gitignore', d: '安全规则：排除环境变量、API Key、令牌、私钥、云服务凭证、模型权重', s: '1.6 KB', l: 136, t: 'cfg' }
+    ];
+
+    var ICONS = { md: '📝', html: '🌐', cfg: '⚙️', skill: '🧩' };
+    var ICON_CLS = { md: 'icon-md', html: 'icon-html', cfg: 'icon-cfg', skill: 'icon-skill' };
+
+    function iconFor(p) {
+      if (p.indexOf('.html') > -1) return 'html';
+      if (p.indexOf('SKILL.md') > -1) return 'skill';
+      if (p.indexOf('.md') > -1) return 'md';
+      return 'cfg';
+    }
+
+    function esc(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+    function render(list) {
+      var box = document.getElementById('fileList');
+      box.innerHTML = '';
+      document.getElementById('fileCount').textContent = list.length;
+      document.getElementById('emptyState').style.display = list.length ? 'none' : 'block';
+      list.forEach(function (f) {
+        var t = iconFor(f.p);
+        var a = document.createElement('a');
+        a.className = 'file-card';
+        a.href = GH + encodeURI(f.p);
+        a.target = '_blank';
+        a.innerHTML =
+          '<div class="file-icon ' + ICON_CLS[t] + '">' + ICONS[t] + '</div>' +
+          '<div class="file-main">' +
+            '<div class="file-name">' + esc(f.p) + '</div>' +
+            '<div class="file-desc">' + esc(f.d) + '</div>' +
+          '</div>' +
+          '<div class="file-meta">' +
+            '<span class="size">' + f.s + '</span>' +
+            '<span class="lines">' + f.l + ' 行</span>' +
+          '</div>';
+        box.appendChild(a);
+      });
+    }
+
+    render(FILES);
+
+    document.getElementById('search').addEventListener('input', function (e) {
+      var q = e.target.value.toLowerCase().replace(/\s+/g, '');
+      if (!q) { render(FILES); return; }
+      render(FILES.filter(function (f) {
+        return f.p.toLowerCase().indexOf(q) > -1 || f.d.toLowerCase().indexOf(q) > -1;
+      }));
+    });
+  </script>
+</body>
+</html>

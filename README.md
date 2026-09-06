@@ -1,24 +1,34 @@
 # 统计学-Python · 个人学习仓库
 
-> 课程：**统计学-Python** ｜ 姓名：**yihan** ｜ 学号：**<学号>** ｜ GitHub：yuan-626 ｜ 仓库公开可访问
+> 课程：**统计学-Python** ｜ 姓名：**yihan** ｜ 学号：P251012217 ｜ GitHub：yuan-626 ｜ 仓库公开可访问
 
-![课程](https://img.shields.io/badge/课程-统计学Python-4f46e5) ![Python](https://img.shields.io/badge/Python-3.12.x-3776ab?logo=python&logoColor=white) ![Git](https://img.shields.io/badge/Git-已配置-f05032?logo=git&logoColor=white) ![公开](https://img.shields.io/badge/仓库-公开可访问-10b981) ![更新](https://img.shields.io/badge/最后更新-2026--09--06-orange)
+![课程](https://img.shields.io/badge/课程-统计学Python-4f46e5)
+
+![Python](https://img.shields.io/badge/Python-3.12.x-3776ab?logo=python\&logoColor=white)
+
+![Git](https://img.shields.io/badge/Git-已配置-f05032?logo=git\&logoColor=white)
+
+![公开](https://img.shields.io/badge/仓库-公开可访问-10b981)
+
+![更新](https://img.shields.io/badge/最后更新-2026--09--06-orange)
+
+> 🗂 **[仓库文件索引页（可视化浏览）](./index.html)** —— 目录树 + 全部文件卡片 + 实时搜索，比纯文字列表更直观
 
 ## 📑 目录
 
-| 章节 | 内容 |
-| --- | --- |
-| [一、仓库用途](#一仓库用途) | 本仓库是做什么的 |
-| [二、目录结构](#二目录结构) | 完整文件树 |
-| [三、项目级 Skill](#三项目级-skill) | 概念学习资料生成 Skill |
-| [四、已生成的学习资料](#四已生成的学习资料) | Agent / 上下文 / Skill 三份资料 |
-| [五、AI 使用与人工核查记录](#五ai-使用与人工核查记录) | AI 分工与人工确认 |
-| [六、资料来源规范](#六资料来源规范) | 12 条已验证一手来源 |
-| [七、安全与隐私](#七安全与隐私) | .gitignore 与凭据处理 |
-| [八、课程章节目录](#八课程章节目录) | 01–04 章节范围 |
-| [九、环境准备](#九环境准备) | venv + 依赖安装 |
-| [十、常用命令](#十常用命令) | Git 速查 |
-| [十一、作业提交信息](#十一作业提交信息) | 姓名 / 学号 / 链接 |
+| 章节                               | 内容                       |
+| -------------------------------- | ------------------------ |
+| [一、仓库用途](#一仓库用途)                 | 本仓库是做什么的                 |
+| [二、目录结构](#二目录结构)                 | 完整文件树                    |
+| [三、项目级 Skill](#三项目级-skill)       | 概念学习资料生成 Skill           |
+| [四、已生成的学习资料](#四已生成的学习资料)         | Agent / 上下文 / Skill 三份资料 |
+| [五、AI 使用与人工核查记录](#五ai-使用与人工核查记录) | AI 分工与人工确认               |
+| [六、资料来源规范](#六资料来源规范)             | 12 条已验证一手来源              |
+| [七、安全与隐私](#七安全与隐私)               | .gitignore 与凭据处理         |
+| [八、课程章节目录](#八课程章节目录)             | 01–04 章节范围               |
+| [九、环境准备](#九环境准备)                 | venv + 依赖安装              |
+| [十、常用命令](#十常用命令)                 | Git 速查                   |
+| [十一、作业提交信息](#十一作业提交信息)           | 姓名 / 学号 / 链接             |
 
 ---
 
@@ -53,13 +63,16 @@ my-first-repo/
 ├── 04-综合项目/
 ├── notebooks/
 ├── docs/
-├── README.md
+├── README.md                     ← 仓库主文档
+├── index.html                    ← 仓库文件索引页（可视化浏览）
 ├── concept-relationship.md       ← 关系说明的旧路径（向后兼容）
 ├── requirements.txt
 └── .gitignore
 ```
 
 两份 `concept-relationship` 内容一致：`.md` 版便于在 GitHub 上直接阅读和复用 Mermaid 源码，`.html` 版为自包含网页，含内嵌 SVG 关系图，可直接在浏览器打开。仓库根目录的 `concept-relationship.md` 保留为向后兼容入口。
+
+根目录的 `index.html` 为**仓库文件索引页**：以目录树 + 文件卡片可视化展示本仓库全部文件（含大小、行数、用途说明），支持实时搜索，点击卡片直接跳转对应文件。纯静态、不依赖任何外部 CDN，下载后双击即可在浏览器打开。
 
 ---
 
@@ -255,7 +268,7 @@ git log --oneline       # 看提交历史
 
 - **姓名**：yihan
 - **学号**：P251012217
-- **GitHub 仓库链接**：<https://github.com/yuan-626/my-first-repo>
+- **GitHub 仓库链接**：[htbantps://github.com/yuan-626/my-first-repo](https://github.com/yuan-626/my-first-repo)
 - **项目级 Skill 路径**：`.workbuddy/skills/concept-learning-material/SKILL.md`
 - **学习资料目录**：`learning-materials/`
 
