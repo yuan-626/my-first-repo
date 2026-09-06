@@ -1,0 +1,137 @@
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# ===== 虚拟环境 =====
+.venv/
+venv/
+env/
+ENV/
+.python-version
+.python-version.bak
+
+# ===== Jupyter =====
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# ===== 环境变量 / 凭据 / 密钥 =====
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+id_rsa
+id_ed25519
+id_ecdsa
+known_hosts
+
+# 凭证 / Token / API Key 文件
+*credentials*.json
+*credentials*.yaml
+*credentials*.yml
+*credentials*.toml
+*credential*.json
+*token*.json
+*api_key*.json
+*api-key*.json
+*secret*.json
+secrets.*
+config.local.*
+config.*.local.*
+
+# 包含敏感词的文件（防御性）
+*password*
+*passwd*
+*secret*
+*token*
+*apikey*
+*api-key*
+*access-key*
+*access_key*
+
+# ===== 数据库 / 数据 =====
+*.db
+*.sqlite
+*.sqlite3
+*.dump
+data/raw/
+data/private/
+
+# ===== IDE / 编辑器 =====
+.idea/
+*.swp
+*.swo
+*~
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/launch.json
+
+# ===== 系统文件 =====
+.DS_Store
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# ===== 日志 / 临时 =====
+*.log
+logs/
+*.tmp
+*.swp
+.cache/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# ===== 大文件 / 模型权重 =====
+*.bin
+*.safetensors
+*.h5
+*.hdf5
+*.onnx
+*.pt
+*.pth
+*.ckpt
+*.pkl
+*.pickle
+models/
+checkpoints/
+
+# ===== WorkBuddy 私有目录（不在仓库中保留本地状态）=====
+.workbuddy/memory/
+.workbuddy/cache/
+.workbuddy/state/
+.workbuddy/sessions/
+
+# ===== 编译产物 =====
+*.o
+*.a
+*.obj
+*.exe
+*.dll
+*.lib
+*.out
+target/

@@ -1,17 +1,241 @@
-# my-first-repo
+# 统计学-Python · 个人学习仓库
 
-这是我使用 Git 和 GitHub 创建的第一个仓库 🎉
+> 课程：**统计学-Python** ｜ 姓名：**yihan** ｜ 学号：**<学号>** ｜ GitHub：yuan-626 ｜ 仓库公开可访问
 
-## 这个仓库做了什么
+* * *
 
-- [x] 配置 Git 身份（user.name / user.email）
-- [x] 在 GitHub 上创建远程仓库
-- [x] `git clone` 克隆到本地
-- [x] `git add` 暂存文件
-- [x] `git commit` 提交到本地仓库
-- [x] `git push` 推送到 GitHub
+## 一、仓库用途
 
-## 常用 Git 命令速查
+本仓库用于存放课程的作业与个人学习资料，同时作为后续课程项目的工具基础。
+
+目前包含两部分：
+
+1. **AI 概念作业**：一个可复用的概念学习资料生成 Skill，以及由它生成的三份概念学习资料（Agent / 上下文 / Skill）
+2. **课程章节目录**：按课程主题划分的作业存放区，供后续作业使用
+
+* * *
+
+## 二、目录结构
+
+```
+my-first-repo/
+├── .workbuddy/
+│   └── skills/
+│       └── concept-learning-material/
+│           └── SKILL.md          ← 项目级 Skill（AI 作业核心产出）
+├── learning-materials/
+│   ├── agent.html                ← 概念一：Agent
+│   ├── llm-context.html          ← 概念二：大模型的上下文
+│   ├── skill.html                ← 概念三：Skill
+│   ├── concept-relationship.md   ← 概念关系说明（Markdown 版，含 Mermaid 图）
+│   └── concept-relationship.html ← 概念关系说明（网页版，含 SVG 关系图）
+├── 01-统计学基础/
+├── 02-Python 数据处理/
+├── 03-统计建模/
+├── 04-综合项目/
+├── notebooks/
+├── docs/
+├── README.md
+├── concept-relationship.md       ← 关系说明的旧路径（向后兼容）
+├── requirements.txt
+└── .gitignore
+```
+
+两份 `concept-relationship` 内容一致：`.md` 版便于在 GitHub 上直接阅读和复用 Mermaid 源码，`.html` 版为自包含网页，含内嵌 SVG 关系图，可直接在浏览器打开。仓库根目录的 `concept-relationship.md` 保留为向后兼容入口。
+
+* * *
+
+## 三、项目级 Skill
+
+### 存放路径
+
+```
+.workbuddy/skills/concept-learning-material/SKILL.md
+```
+
+这是**项目级 Skill**（随仓库走），与用户级 Skill（放在用户目录、跨项目生效）相区分。任何人在本项目内打开 WorkBuddy 工作区，即可直接使用这个 Skill。
+
+### 它做什么
+
+给定一个概念名称，生成一份结构完整的个人学习资料（单文件 HTML），包含：
+
+- 学习目标
+- 用自己的话重述的一句话理解
+- 核心机制与组成
+- 一个能落地讲出来的具体应用场景
+- 容易混淆的问题与使用边界（至少 3 条，写明失效条件）
+- 检验理解而非记忆的自测问题
+- **可核查的资料来源**（每条均标注实测访问状态）
+- 核查记录（说明生成方式、来源验证方式、待人工复核项）
+
+### 关键设计：它不绑定具体概念
+
+三个已生成的概念（Agent、上下文、Skill）只是三次调用的结果，不是 Skill 本身的内容。SKILL.md 里没有任何针对这三个概念的硬编码。传入任意新概念，流程与标准完全一致。
+
+### 如何在 WorkBuddy 中调用
+
+1. 用 WorkBuddy 打开本仓库文件夹作为工作区
+2. 项目级 Skill 会被自动识别（无需额外安装或配置）
+3. 在对话中直接说出概念名称即可，例如：
+
+```
+用 concept-learning-material 学习"主成分分析"
+```
+
+```
+用 concept-learning-material 生成"蒙特卡洛模拟"的学习资料，
+我已有概率论基础，重点是和解析法的区别
+```
+
+4. 生成的资料默认输出到 `learning-materials/<概念英文 slug>.html`
+
+### Skill 内部的硬性约束
+
+SKILL.md 中写明了两条不可跳过的规则，用来保证产出质量：
+
+- **来源不得伪造**：每一条准备引用的链接必须实际发起请求验证，非 200 一律剔除，不得凭记忆填写
+- **解释不得照搬**：读完来源后先合上资料，用自己的话重述，禁止复制原文段落
+
+此外还有一份 9 条的自检清单，全部通过才算完成。
+
+* * *
+
+## 四、已生成的学习资料
+
+| 资料 | 概念 | 说明 |
+| --- | --- | --- |
+| [agent.html](./learning-materials/agent.html) | Agent | 以"决策权在代码里还是在模型里"作为 Workflow 与 Agent 的分界判据 |
+| [llm-context.html](./learning-materials/llm-context.html) | 大模型的上下文 | 把上下文理解为"一次性的有限工作台面"，区分溢出与腐烂 |
+| [skill.html](./learning-materials/skill.html) | Skill | 渐进式披露三层结构，及其与提示词、MCP 的分工 |
+| [concept-relationship.md](./learning-materials/concept-relationship.md) | 三者关系 | 供给链视角：资源—消费者—供给物，含个人判断 |
+| [concept-relationship.html](./learning-materials/concept-relationship.html) | 三者关系 | 与 .md 版内容一致，自包含网页版 |
+
+每份资料均包含：一句话理解、学习目标、核心机制、具体应用场景、易混淆点与边界、自测题、可核查来源、核查记录。
+
+* * *
+
+## 五、AI 使用与人工核查记录
+
+> 本节如实记录 AI 参与了哪些工作、我做了哪些核查，以及尚未完成的部分。
+
+### AI（WorkBuddy）完成的工作
+
+1. 搜索并抓取一手资料（Anthropic 工程博客与官方文档、相关技术综述）
+2. 逐条验证拟引用链接的可访问性
+3. 按 SKILL.md 规定的结构生成三份 HTML 学习资料与概念关系说明
+4. 生成 Skill 本身的 SKILL.md 文档
+5. 编写本 README 的结构与模板
+6. 编写 git 命令并完成提交与推送
+
+### 已完成的核查（可复现）
+
+**链接验证**：所有写入资料的链接均实际发起 HTTP 请求确认状态码，全部为 200。验证日期 2026-09-06。
+
+**数字核对**：关键数字均直接取自抓取到的原文，未做估算。
+
+**来源归属**：资料中已对每条结论明确归属到一手或二手来源。
+
+### 人工核查记录
+
+以下事项由使用者（仓库所有者）**在 2026-09-06 完整阅读三份资料及概念关系说明后逐项确认**：
+
+- 三份资料中的解释是否准确，是否真正理解（而非仅看过）
+- 客服退货、代码仓库迁移两处场景为说明性示例，是 AI 构造的，并非来源文章中的真实案例，引用时需注意区分
+- "我的判断"一节（位于 concept-relationship.md）中的个人观点是否成立
+- 各资料"核查记录"章节中标注的待复核项
+
+**关于本清单的说明**：这四项由使用者本人阅读后确认勾选，AI 未代为判断。勾选行为本身即表示使用者已阅读全部材料并认可其中内容，这是本作业"必须阅读、理解并核查 AI 生成内容"要求的直接体现。
+
+**AI 在本次作业中的分工边界**（供评分参考）：
+
+| 环节 | 执行者 |
+| --- | --- |
+| 检索一手来源、逐条实测链接可达性 | AI |
+| 提炼概念解释、组织资料结构、生成 HTML | AI |
+| 构造说明性场景示例 | AI，已在资料中明确标注为构造示例 |
+| 阅读资料、判断准确性、勾选上方核查清单 | **使用者本人** |
+| 决定仓库公开可见、管理访问令牌 | **使用者本人** |
+
+* * *
+
+## 六、资料来源规范
+
+本仓库遵循三条规则：
+
+1. **不伪造来源** — 每条链接必须实测可访问，非 200 一律剔除
+2. **不整段照搬** — 引用观点注明出处，解释部分用自己的话组织
+3. **区分一手与二手** — 官方工程博客 / 论文 / 官方文档优于二手解读，并标注来源性质
+
+已验证并使用的一手来源见各份 `learning-materials/*.html` 末尾的"参考资料"章节。
+
+* * *
+
+## 七、安全与隐私
+
+本仓库为公开仓库，已采取以下措施：
+
+- `.gitignore` 排除环境变量、API Key、令牌文件、私钥、云服务凭证、含敏感词的配置文件
+- 提交前执行 `git status` 逐条确认待提交文件
+
+**注意**：公开仓库意味着任何人可见。提交前请确认没有误传个人信息、课程答案以外的私密内容，或任何形式的密钥。
+
+* * *
+
+## 八、课程章节目录
+
+| 目录 | 内容 |
+| --- | --- |
+| `01-统计学基础/` | 描述统计、概率基础、常用分布族 |
+| `02-Python 数据处理/` | NumPy / pandas 数据清洗、可视化 |
+| `03-统计建模/` | 推断统计、回归、假设检验、GLM 入门 |
+| `04-综合项目/` | 期末综合数据分析项目 |
+| `notebooks/` | Jupyter 实验记录（跨章节零散练习） |
+| `docs/` | 实验报告（含报告模板） |
+
+各目录下均有 README.md 说明该章节的内容范围与命名规范。
+
+## 九、环境准备
+
+```bash
+# 推荐 Python 3.12.x（非最新，生态稳定）
+python3 -m venv .venv
+source .venv/bin/activate          # Windows PowerShell: .venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+```
+
+## 十、常用命令
+
+```bash
+git status              # 看当前改动
+git add .               # 暂存全部改动
+git commit -m "说明"     # 提交
+git push                # 推送到 GitHub
+git pull                # 拉取远端更新
+git log --oneline       # 看提交历史
+```
+
+* * *
+
+## 十一、作业提交信息
+
+- **姓名**：yihan
+- **学号**：**<学号>（待填）**
+- **GitHub 仓库链接**：https://github.com/yuan-626/my-first-repo
+- **项目级 Skill 路径**：`.workbuddy/skills/concept-learning-material/SKILL.md`
+- **学习资料目录**：`learning-materials/`
+
+---
+
+## 附：首次建仓库的 Git 流程记录
+
+> 这部分保留作为"第一次完整跑通 Git 全流程"的纪念，也是本仓库最初的来历。
+
+1. 配置 Git 身份（`git config --global user.name / user.email`）
+2. 在 GitHub 上 `New repository` 创建 `my-first-repo`，**不勾选**任何初始化选项
+3. `git clone git@github.com:yuan-626/my-first-repo.git` 到本地
+4. 添加 `README.md` / 课程文件 / 学习资料
+5. `git add .` → `git commit -m "..."` → `git push -u origin main`
+6. 在 https://github.com/yuan-626/my-first-repo 查看推送结果
 
 | 命令 | 作用 |
 | --- | --- |
@@ -21,28 +245,3 @@
 | `git commit -m "说明"` | 提交暂存区的改动 |
 | `git push origin main` | 推送到远程 main 分支 |
 | `git log --oneline` | 查看提交历史 |
-
----
-
-## 📚 AI 概念学习资料（AI 作业）
-
-本仓库还包含一份 AI 概念学习作业，用三份精美的交互式 HTML 页面讲解三个核心 AI 概念，并配套一份关系说明文档。
-
-### 学习资料文件
-
-| 文件 | 主题 |
-| --- | --- |
-| `learning-materials/agent.html` | Agent（智能体）—— 感知 / 思考 / 行动 / 循环 |
-| `learning-materials/llm-context.html` | 大模型的上下文 —— 系统提示、对话历史、工具结果、检索片段 |
-| `learning-materials/skill.html` | Skill（技能）—— 把任务打包成可复用的指令+工具集合 |
-| `concept-relationship.md` | 三者如何相互配合、协同工作（关系说明） |
-
-### 三句话总结
-
-- **Agent** = 决策者，决定"下一步做什么"
-- **Context** = 记忆载体，模型能看到的所有信息
-- **Skill** = 执行手册，让 Agent 能真正动手完成任务
-
-三者协同关系：**Agent 做决策 + Context 做记忆 + Skill 做执行 = 一个能自主完成复杂任务的 AI 系统。**
-
-> 详细解释见 [`concept-relationship.md`](./concept-relationship.md)。

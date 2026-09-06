@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Agent · 上下文 · Skill —— 三者如何协同工作</title>
+<style>
+  :root{
+    --bg:#fafafa; --fg:#1a1a1a; --muted:#666; --card:#fff;
+    --bd:#e5e5e5; --acc:#3b6cd2; --acc-soft:#eaf0fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;padding:32px 16px;font-family:-apple-system,Segoe UI,"PingFang SC","Microsoft YaHei",sans-serif;
+       background:var(--bg);color:var(--fg);line-height:1.7}
+  .wrap{max-width:880px;margin:0 auto}
+  h1{font-size:30px;margin:0 0 8px}
+  h2{font-size:22px;margin:40px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--bd)}
+  h3{font-size:17px;margin:24px 0 8px}
+  p,li{font-size:15px}
+  code{background:#f1f1f4;padding:2px 6px;border-radius:4px;font-size:90%}
+  pre{background:#f6f6f9;padding:14px 16px;border-radius:6px;overflow:auto;border:1px solid var(--bd)}
+  table{width:100%;border-collapse:collapse;margin:12px 0 20px;font-size:14px}
+  th,td{border:1px solid var(--bd);padding:8px 10px;text-align:left;vertical-align:top}
+  th{background:var(--acc-soft)}
+  blockquote{margin:12px 0;padding:8px 14px;border-left:3px solid var(--acc);background:#f7f9ff;color:#234}
+  .note{font-size:13px;color:var(--muted)}
+  .card{background:var(--card);border:1px solid var(--bd);border-radius:8px;padding:18px 22px;margin:18px 0}
+  .legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:8px;font-size:13px;color:#444}
+  .legend span{display:inline-flex;align-items:center;gap:6px}
+  .legend i{display:inline-block;width:12px;height:12px;border-radius:3px}
+  svg.rel{width:100%;height:auto;display:block;margin:14px 0 6px}
+  .pill{display:inline-block;font-size:12px;padding:2px 8px;border-radius:99px;background:var(--acc-soft);color:#234;margin-left:6px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>Agent · 上下文 · Skill <span class="pill">三者如何协同工作</span></h1>
+<p class="note">
+  配套学习资料：
+  <a href="./agent.html">agent.html</a> ·
+  <a href="./llm-context.html">llm-context.html</a> ·
+  <a href="./skill.html">skill.html</a>
+</p>
+
+<div class="card">
+  <strong>三句话总结</strong>
+  <ul>
+    <li><b>Agent</b> = 决策者，决定"下一步做什么"。</li>
+    <li><b>Context</b> = 记忆载体，模型能看到的所有信息。</li>
+    <li><b>Skill</b> = 行动手册，让 Agent 能真正动手完成任务。</li>
+  </ul>
+  <p><b>三者协同：</b>Agent 做决策 + Context 做记忆 + Skill 做执行 = 一个能自主完成复杂任务的 AI 系统。</p>
+</div>
+
+<h2>一、三个概念各自是什么</h2>
+<table>
+  <thead><tr><th>概念</th><th>一句话定义</th><th>类比</th></tr></thead>
+  <tbody>
+    <tr><td><b>Agent</b>（智能体）</td><td>能"感知 → 思考 → 行动 → 循环"的自治 AI 实体</td><td>公司里那位有目标、有权限、能独立把项目做成的"项目经理"</td></tr>
+    <tr><td><b>Context</b>（上下文）</td><td>模型在一次任务中所能"看到"的全部信息：系统提示、历史消息、工具结果、检索片段</td><td>项目经理桌上的"项目文件夹 + 邮件记录 + 参考资料"</td></tr>
+    <tr><td><b>Skill</b>（技能）</td><td>把任务打包成"指令 + 工具"的、可复用的能力单元</td><td>项目经理抽屉里一份份标准操作手册（SOP）</td></tr>
+  </tbody>
+</table>
+
+<h2>二、三者关系图</h2>
+
+<svg class="rel" viewBox="0 0 680 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Agent Context Skill 关系图">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#3b6cd2"/>
+    </marker>
+  </defs>
+
+  <!-- 节点 -->
+  <g font-family="-apple-system,Segoe UI,PingFang SC,Microsoft YaHei,sans-serif">
+    <rect x="40"  y="40"  width="180" height="80" rx="10" fill="#eaf0fb" stroke="#3b6cd2" stroke-width="1.5"/>
+    <text x="130" y="78" text-anchor="middle" font-size="18" font-weight="700" fill="#1a1a1a">Skill</text>
+    <text x="130" y="100" text-anchor="middle" font-size="12" fill="#555">SOP + 工具</text>
+
+    <rect x="250" y="140" width="180" height="80" rx="10" fill="#fff7e6" stroke="#c98a16" stroke-width="1.5"/>
+    <text x="340" y="178" text-anchor="middle" font-size="18" font-weight="700" fill="#1a1a1a">Context</text>
+    <text x="340" y="200" text-anchor="middle" font-size="12" fill="#555">工作记忆</text>
+
+    <rect x="460" y="40"  width="180" height="80" rx="10" fill="#eafff2" stroke="#1a8f4c" stroke-width="1.5"/>
+    <text x="550" y="78" text-anchor="middle" font-size="18" font-weight="700" fill="#1a1a1a">Agent</text>
+    <text x="550" y="100" text-anchor="middle" font-size="12" fill="#555">感知→思考→行动→循环</text>
+  </g>
+
+  <!-- 连线 -->
+  <g fill="none" stroke="#3b6cd2" stroke-width="1.5">
+    <!-- Skill -> Context -->
+    <path d="M 175 120 C 230 160, 240 160, 250 180" marker-end="url(#arr)"/>
+    <text x="180" y="158" font-size="11" fill="#3b6cd2">工具结果写入</text>
+
+    <!-- Context -> Agent -->
+    <path d="M 430 180 C 460 160, 470 110, 460 90" marker-end="url(#arr)"/>
+    <text x="430" y="120" font-size="11" fill="#3b6cd2">为决策提供信息</text>
+
+    <!-- Agent -> Skill -->
+    <path d="M 460 90 C 360 60, 280 60, 220 80" marker-end="url(#arr)"/>
+    <text x="300" y="55" font-size="11" fill="#3b6cd2">按需调用</text>
+  </g>
+
+  <g transform="translate(40,260)">
+    <rect x="0" y="0" width="600" height="80" rx="8" fill="#f7f9ff" stroke="#cfdcf2"/>
+    <text x="12" y="22" font-size="13" font-weight="700" fill="#234">决策 → 执行 → 沉淀 → 再决策（闭环）</text>
+    <text x="12" y="44" font-size="12" fill="#234">Agent 决定下一步调用哪个 Skill；Skill 执行后把结果写回 Context；Context 既是 Skill 的输出沉淀，也是 Agent 的下一步输入。</text>
+    <text x="12" y="64" font-size="12" fill="#234">三者形成"决策 → 执行 → 沉淀 → 再决策"的循环，缺一不可。</text>
+  </g>
+</svg>
+
+<div class="legend">
+  <span><i style="background:#eaf0fb;border:1px solid #3b6cd2"></i>Skill（供给侧）</span>
+  <span><i style="background:#fff7e6;border:1px solid #c98a16"></i>Context（消费侧）</span>
+  <span><i style="background:#eafff2;border:1px solid #1a8f4c"></i>Agent（决策侧）</span>
+</div>
+
+<h2>三、它们如何相互配合（文字版）</h2>
+
+<h3>1）Context 是 Agent 的"工作记忆"</h3>
+<ul>
+  <li>Agent 每一步行动前，都要先组装上下文：系统提示 + 历史对话 + 工具返回值 + 检索片段。</li>
+  <li>没有上下文，Agent 就像失忆的人，不知道之前说过什么、文件写到哪里了。</li>
+  <li><b>Agent 决定"上下文里放什么"，Context 又约束"Agent 能用什么"。</b></li>
+</ul>
+
+<h3>2）Skill 是 Agent 的"专业能力扩展"</h3>
+<ul>
+  <li>没有 Skill 的 Agent 只会"生成文字"，加上 Skill 之后才能"动手做事"（读写文件、查资料、操作 API）。</li>
+  <li>Skill 由 Agent 在合适的时机主动调用 → 工具执行 → 结果写回 Context → Agent 再继续思考。</li>
+  <li><b>Skill 让通用大模型变成"领域专家"，让 Agent 从"对话者"升级为"执行者"。</b></li>
+</ul>
+
+<h3>3）三者构成一个完整的智能系统</h3>
+<blockquote>Agent（决策者）+ Context（记忆载体）+ Skill（行动手册）= 一个能自主完成复杂任务的 AI 系统。</blockquote>
+
+<h2>四、为什么三者缺一不可？</h2>
+<table>
+  <thead><tr><th>缺谁</th><th>会怎样</th></tr></thead>
+  <tbody>
+    <tr><td>没有 Agent</td><td>只有死板的工具调用，没有目标和规划，像一台无人驾驶的机器</td></tr>
+    <tr><td>没有 Context</td><td>Agent 每一步都"失忆"，任务做不连贯</td></tr>
+    <tr><td>没有 Skill</td><td>Agent 只会"说话"，不能"做事"，是空想家</td></tr>
+  </tbody>
+</table>
+
+<h2>五、设计时的实践建议</h2>
+<ol>
+  <li><b>设计 Agent 时</b>：明确它的目标、权限边界、终止条件。</li>
+  <li><b>设计 Context 时</b>：保持关键信息靠前/靠后（避免 Lost in the Middle），及时总结压缩长对话。</li>
+  <li><b>设计 Skill 时</b>：单一职责、触发条件清晰、配套示例齐全。</li>
+</ol>
+
+<p class="note">本文件与 <a href="./concept-relationship.md">concept-relationship.md</a> 内容一致，便于在 GitHub 与浏览器两种环境下阅读。</p>
+
+</div>
+</body>
+</html>
