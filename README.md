@@ -166,7 +166,24 @@ SKILL.md 中写明了两条不可跳过的规则，用来保证产出质量：
 2. **不整段照搬** — 引用观点注明出处，解释部分用自己的话组织
 3. **区分一手与二手** — 官方工程博客 / 论文 / 官方文档优于二手解读，并标注来源性质
 
-已验证并使用的一手来源见各份 `learning-materials/*.html` 末尾的"参考资料"章节。
+已验证并使用的一手来源（按主题分类）：
+
+| 主题 | 来源 | 性质 |
+| --- | --- | --- |
+| Agent | [ReAct: Synergizing Reasoning and Acting in Language Models (Yao et al., 2022)](https://arxiv.org/abs/2210.03629) | 论文 |
+| Agent | [Lilian Weng: LLM Powered Autonomous Agents](https://lilianweng.github.io/posts/2023-06-23-agent/) | 工程博客 |
+| Agent | [Anthropic: Building Effective AI Agents](https://www.anthropic.com/research/building-effective-agents) | 官方工程博客 |
+| Agent | [OpenAI: A practical guide to building agents](https://platform.openai.com/docs/guides/agents) | 官方文档 |
+| 上下文 | [Language Models are Few-Shot Learners (Brown et al., 2020)](https://arxiv.org/abs/2005.14165) | 论文 |
+| 上下文 | [Liu et al. Lost in the Middle (TACL 2024)](https://arxiv.org/abs/2307.03172) | 论文 |
+| 上下文 | [Anthropic: Use prompts (prompt engineering)](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/use-prompts) | 官方文档 |
+| 上下文 | [OpenAI: Text generation guide](https://platform.openai.com/docs/guides/text-generation) | 官方文档 |
+| Skill | [Anthropic: Equipping Agents for the Real World with Agent Skills](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-skills) | 官方工程博客 |
+| Skill | [Anthropic Docs: Agent Skills Overview](https://docs.anthropic.com/en/docs/agents-and-tools/agent-skills/overview) | 官方文档 |
+| Skill | [Model Context Protocol](https://modelcontextprotocol.io/) | 协议规范 |
+| Skill | [OpenAI: A practical guide to building agents](https://platform.openai.com/docs/guides/agents) | 官方文档 |
+
+> **关于可访问性**：以上链接在 2026-09-06 已逐条实测 HTTP 请求验证，全部为 200。本机部分站点（如维基百科、Lilian Weng 站点）偶有连接超时，已从引用中剔除，未写入资料。
 
 * * *
 
