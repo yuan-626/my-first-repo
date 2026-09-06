@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>大模型的上下文 (LLM Context) · 概念学习</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body { font-family: 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif; }
+  .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.12); }
+  .card { transition: all 0.3s ease; }
+  .bar { transition: width 0.8s ease; }
+</style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 via-emerald-50 to-teal-50 min-h-screen text-slate-800">
+<header class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white py-12 px-6 shadow-lg">
+  <div class="max-w-5xl mx-auto">
+    <div class="flex items-center gap-3 mb-3">
+      <span class="text-3xl">📜</span>
+      <span class="text-sm uppercase tracking-wider bg-white/20 px-3 py-1 rounded-full">核心概念 · Core Concept</span>
+    </div>
+    <h1 class="text-4xl md:text-5xl font-bold mb-4">大模型的上下文 (LLM Context)</h1>
+    <p class="text-xl text-emerald-100 max-w-3xl">大模型在一次对话中所能"看到"的所有信息——决定了它知不知道、能记得你说过什么。</p>
+  </div>
+</header>
+
+<main class="max-w-5xl mx-auto px-6 py-10 space-y-12">
+
+  <section class="reveal">
+    <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">📌 一句话理解</h2>
+    <div class="bg-white border-l-4 border-emerald-500 p-5 rounded-r-lg shadow-sm">
+      <p class="text-lg leading-relaxed">上下文 = 大模型在生成下一个字时所能<span class="font-semibold text-emerald-600">"看到"的全部输入内容</span>，包括 <span class="font-semibold">系统提示、对话历史、用户当前问题、工具返回结果、外部检索片段</span> 等。超出上下文窗口的内容，模型就"看不见、记不住"。</p>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">📦 上下文的组成部分</h2>
+    <div class="grid md:grid-cols-2 gap-4">
+      <div class="card bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+        <div class="text-2xl mb-2">🧭</div>
+        <h3 class="font-bold mb-1">系统提示 (System Prompt)</h3>
+        <p class="text-sm text-slate-600">设定模型身份、行为准则、工具使用规范等"前置指令"。</p>
+      </div>
+      <div class="card bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+        <div class="text-2xl mb-2">💬</div>
+        <h3 class="font-bold mb-1">对话历史 (Messages)</h3>
+        <p class="text-sm text-slate-600">用户与助手此前的多轮问答，按时间顺序排列。</p>
+      </div>
+      <div class="card bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+        <div class="text-2xl mb-2">🧰</div>
+        <h3 class="font-bold mb-1">工具结果 (Tool Outputs)</h3>
+        <p class="text-sm text-slate-600">Agent 调用工具后的返回值，会被注入下一轮对话。</p>
+      </div>
+      <div class="card bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+        <div class="text-2xl mb-2">📚</div>
+        <h3 class="font-bold mb-1">检索片段 (RAG Context)</h3>
+        <p class="text-sm text-slate-600">从外部知识库检索得到的相关文本，临时塞进提示里。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">📏 上下文窗口有多大？</h2>
+    <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 space-y-3">
+      <div>
+        <div class="flex justify-between mb-1"><span class="text-sm font-semibold">GPT-3.5 (2022)</span><span class="text-sm text-slate-500">~4K tokens</span></div>
+        <div class="w-full bg-slate-100 rounded-full h-3"><div class="bar bg-slate-400 h-3 rounded-full" style="width:4%"></div></div>
+      </div>
+      <div>
+        <div class="flex justify-between mb-1"><span class="text-sm font-semibold">GPT-4 (2023)</span><span class="text-sm text-slate-500">8K / 32K</span></div>
+        <div class="w-full bg-slate-100 rounded-full h-3"><div class="bar bg-emerald-400 h-3 rounded-full" style="width:12%"></div></div>
+      </div>
+      <div>
+        <div class="flex justify-between mb-1"><span class="text-sm font-semibold">Claude 3.5 (2024)</span><span class="text-sm text-slate-500">200K</span></div>
+        <div class="w-full bg-slate-100 rounded-full h-3"><div class="bar bg-emerald-500 h-3 rounded-full" style="width:55%"></div></div>
+      </div>
+      <div>
+        <div class="flex justify-between mb-1"><span class="text-sm font-semibold">Gemini 1.5 Pro (2024)</span><span class="text-sm text-slate-500">1M / 2M</span></div>
+        <div class="w-full bg-slate-100 rounded-full h-3"><div class="bar bg-emerald-700 h-3 rounded-full" style="width:95%"></div></div>
+      </div>
+      <p class="text-xs text-slate-500 pt-2">💡 1 个中文字 ≈ 1.5 ~ 2 个 tokens；上下文越长，处理成本越高、响应越慢。</p>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">⚠️ 上下文的三大陷阱</h2>
+    <div class="grid md:grid-cols-3 gap-4">
+      <div class="bg-red-50 border border-red-200 p-5 rounded-xl">
+        <h3 class="font-bold text-red-700 mb-1">1. 中间遗忘 (Lost in the Middle)</h3>
+        <p class="text-sm text-slate-700">超长上下文中，模型对<span class="font-semibold">中间段</span>的引用最不准，首尾反而记得清。</p>
+      </div>
+      <div class="bg-red-50 border border-red-200 p-5 rounded-xl">
+        <h3 class="font-bold text-red-700 mb-1">2. 上下文污染</h3>
+        <p class="text-sm text-slate-700">RAG 检索塞进了错误片段，模型反而一本正经地胡说。</p>
+      </div>
+      <div class="bg-red-50 border border-red-200 p-5 rounded-xl">
+        <h3 class="font-bold text-red-700 mb-1">3. Token 成本暴涨</h3>
+        <p class="text-sm text-slate-700">百万级上下文每次调用费用可能上百元，需谨慎设计。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">📚 经典参考资料</h2>
+    <ul class="space-y-2 bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+      <li>📄 <a class="text-emerald-600 hover:underline" href="https://arxiv.org/abs/2307.03172" target="_blank">Lost in the Middle: How Language Models Use Long Contexts</a> · 揭示长上下文陷阱</li>
+      <li>📖 <a class="text-emerald-600 hover:underline" href="https://platform.openai.com/docs/guides/text-generation" target="_blank">OpenAI - Text Generation Guide</a></li>
+      <li>📖 <a class="text-emerald-600 hover:underline" href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/use-prompts" target="_blank">Anthropic - Prompt Engineering Overview</a></li>
+      <li>📄 <a class="text-emerald-600 hover:underline" href="https://arxiv.org/abs/2005.14165" target="_blank">Language Models are Few-Shot Learners (GPT-3)</a> · 上下文学习的奠基论文</li>
+    </ul>
+  </section>
+
+  <section class="reveal">
+    <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">🧪 上下文示例</h2>
+    <div class="bg-slate-900 text-slate-100 rounded-xl p-5 font-mono text-sm leading-relaxed shadow-sm">
+<pre>[System]
+你是一位耐心的编程老师，回答用中文，举例清楚。
+
+[User 第1轮]
+什么是闭包？
+
+[Assistant 第1轮]
+闭包是指函数可以"记住"创建时的变量……
+
+[User 第2轮]
+能用 Python 举个例子吗？</pre>
+    </div>
+    <p class="text-sm text-slate-500 mt-2">💡 第 2 轮时，模型收到的"上下文"是 [System] + [User1] + [Assistant1] + [User2] 这四段拼起来。</p>
+  </section>
+
+</main>
+
+<footer class="text-center text-slate-500 text-sm py-8">
+  概念学习资料 · LLM Context · 由 WorkBuddy 生成
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => e.isIntersecting && e.target.classList.add('visible'));
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Agent · 智能体概念学习</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body { font-family: 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif; }
+  .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  details[open] summary .chev { transform: rotate(90deg); }
+  .chev { transition: transform 0.2s; }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.12); }
+  .card { transition: all 0.3s ease; }
+</style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 min-h-screen text-slate-800">
+<header class="bg-gradient-to-r from-indigo-600 to-blue-600 text-white py-12 px-6 shadow-lg">
+  <div class="max-w-5xl mx-auto">
+    <div class="flex items-center gap-3 mb-3">
+      <span class="text-3xl">🤖</span>
+      <span class="text-sm uppercase tracking-wider bg-white/20 px-3 py-1 rounded-full">核心概念 · Core Concept</span>
+    </div>
+    <h1 class="text-4xl md:text-5xl font-bold mb-4">Agent（智能体）</h1>
+    <p class="text-xl text-blue-100 max-w-3xl">一个能"感知 → 思考 → 行动"的自治 AI 实体，是大模型从"对话工具"进化为"问题解决者"的关键载体。</p>
+  </div>
+</header>
+
+<main class="max-w-5xl mx-auto px-6 py-10 space-y-12">
+
+  <section class="reveal">
+    <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">📌 一句话理解</h2>
+    <div class="bg-white border-l-4 border-indigo-500 p-5 rounded-r-lg shadow-sm">
+      <p class="text-lg leading-relaxed">Agent 是一个<span class="font-semibold text-indigo-600">"有目标、会思考、能执行"的 AI 实体</span>。它不止会回答问题，还能根据目标自主规划步骤、调用工具（搜索、代码、文件操作……），最终把任务完成。</p>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">🧩 Agent 的四大核心能力</h2>
+    <div class="grid md:grid-cols-2 gap-4">
+      <div class="card bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+        <div class="text-2xl mb-2">👁️</div>
+        <h3 class="font-bold mb-1">感知 Perception</h3>
+        <p class="text-sm text-slate-600">接收用户输入、读取文件、观察屏幕、检索环境信息。</p>
+      </div>
+      <div class="card bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+        <div class="text-2xl mb-2">🧠</div>
+        <h3 class="font-bold mb-1">思考 Reasoning</h3>
+        <p class="text-sm text-slate-600">由大模型驱动，将目标拆解成步骤，决定下一步做什么。</p>
+      </div>
+      <div class="card bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+        <div class="text-2xl mb-2">🛠️</div>
+        <h3 class="font-bold mb-1">行动 Action</h3>
+        <p class="text-sm text-slate-600">调用工具（搜索、写代码、改文件、操作 API……）来改变环境。</p>
+      </div>
+      <div class="card bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+        <div class="text-2xl mb-2">🔁</div>
+        <h3 class="font-bold mb-1">循环 Loop</h3>
+        <p class="text-sm text-slate-600">观察结果 → 反思 → 再行动，直到任务完成或达到终止条件。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">⚙️ Agent 的工作循环</h2>
+    <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+      <ol class="space-y-3">
+        <li class="flex items-start gap-3"><span class="bg-indigo-500 text-white rounded-full w-7 h-7 flex items-center justify-center flex-shrink-0 font-bold">1</span><div><span class="font-semibold">接收目标</span>：用户提出任务，例如"帮我调研竞品并写份报告"。</div></li>
+        <li class="flex items-start gap-3"><span class="bg-indigo-500 text-white rounded-full w-7 h-7 flex items-center justify-center flex-shrink-0 font-bold">2</span><div><span class="font-semibold">规划计划</span>：LLM 分析任务，拆出"检索 → 汇总 → 写作 → 校对"等步骤。</div></li>
+        <li class="flex items-start gap-3"><span class="bg-indigo-500 text-white rounded-full w-7 h-7 flex items-center justify-center flex-shrink-0 font-bold">3</span><div><span class="font-semibold">执行动作</span>：调用工具（Web 搜索、写文件……）实际产出结果。</div></li>
+        <li class="flex items-start gap-3"><span class="bg-indigo-500 text-white rounded-full w-7 h-7 flex items-center justify-center flex-shrink-0 font-bold">4</span><div><span class="font-semibold">观察反馈</span>：检查动作是否成功（如文件是否真的写入）。</div></li>
+        <li class="flex items-start gap-3"><span class="bg-indigo-500 text-white rounded-full w-7 h-7 flex items-center justify-center flex-shrink-0 font-bold">5</span><div><span class="font-semibold">循环直到完成</span>：未完成则回到步骤 2 重新规划。</div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">🆚 Agent vs 普通 LLM 对话</h2>
+    <div class="overflow-x-auto">
+      <table class="w-full bg-white rounded-xl shadow-sm overflow-hidden">
+        <thead class="bg-indigo-600 text-white">
+          <tr>
+            <th class="px-4 py-3 text-left">维度</th>
+            <th class="px-4 py-3 text-left">普通 LLM 对话</th>
+            <th class="px-4 py-3 text-left">Agent</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-slate-200">
+          <tr><td class="px-4 py-3 font-semibold">输出形式</td><td class="px-4 py-3">一段文字回答</td><td class="px-4 py-3">多步骤行动 + 最终结果</td></tr>
+          <tr class="bg-slate-50"><td class="px-4 py-3 font-semibold">是否调用工具</td><td class="px-4 py-3">否（纯生成）</td><td class="px-4 py-3">是（搜索、代码、API、文件……）</td></tr>
+          <tr><td class="px-4 py-3 font-semibold">主动性</td><td class="px-4 py-3">被动响应</td><td class="px-4 py-3">主动规划与迭代</td></tr>
+          <tr class="bg-slate-50"><td class="px-4 py-3 font-semibold">任务时长</td><td class="px-4 py-3">秒级</td><td class="px-4 py-3">分钟到小时</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">📚 经典参考资料</h2>
+    <ul class="space-y-2 bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+      <li>📖 <a class="text-indigo-600 hover:underline" href="https://lilianweng.github.io/posts/2023-06-23-agent/" target="_blank">Lilian Weng - LLM Powered Autonomous Agents（2023）</a> · Agent 领域必读综述</li>
+      <li>📖 <a class="text-indigo-600 hover:underline" href="https://platform.openai.com/docs/guides/agents" target="_blank">OpenAI - A Practical Guide to Building Agents</a></li>
+      <li>📖 <a class="text-indigo-600 hover:underline" href="https://www.anthropic.com/research/building-effective-agents" target="_blank">Anthropic - Building Effective Agents</a></li>
+      <li>📄 <a class="text-indigo-600 hover:underline" href="https://arxiv.org/abs/2210.03629" target="_blank">ReAct: Synergizing Reasoning and Acting in Language Models</a> · 经典论文</li>
+    </ul>
+  </section>
+
+  <details class="reveal bg-white rounded-xl shadow-sm border border-slate-200 p-5">
+    <summary class="cursor-pointer font-semibold flex items-center gap-2"><span class="chev">▶</span>🧪 自测一下</summary>
+    <ol class="mt-4 space-y-3 list-decimal pl-6">
+      <li>Agent 区别于普通 LLM 的最关键特征是什么？</li>
+      <li>ReAct 框架里的"Re"和"Act"分别代表什么？</li>
+      <li>为什么 Agent 需要"循环"而不是一次性输出？</li>
+    </ol>
+  </details>
+
+</main>
+
+<footer class="text-center text-slate-500 text-sm py-8">
+  概念学习资料 · Agent · 由 WorkBuddy 生成
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => e.isIntersecting && e.target.classList.add('visible'));
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
