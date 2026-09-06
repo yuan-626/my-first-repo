@@ -2,7 +2,25 @@
 
 > 课程：**统计学-Python** ｜ 姓名：**yihan** ｜ 学号：**<学号>** ｜ GitHub：yuan-626 ｜ 仓库公开可访问
 
-* * *
+![课程](https://img.shields.io/badge/课程-统计学Python-4f46e5) ![Python](https://img.shields.io/badge/Python-3.12.x-3776ab?logo=python&logoColor=white) ![Git](https://img.shields.io/badge/Git-已配置-f05032?logo=git&logoColor=white) ![公开](https://img.shields.io/badge/仓库-公开可访问-10b981) ![更新](https://img.shields.io/badge/最后更新-2026--09--06-orange)
+
+## 📑 目录
+
+| 章节 | 内容 |
+| --- | --- |
+| [一、仓库用途](#一仓库用途) | 本仓库是做什么的 |
+| [二、目录结构](#二目录结构) | 完整文件树 |
+| [三、项目级 Skill](#三项目级-skill) | 概念学习资料生成 Skill |
+| [四、已生成的学习资料](#四已生成的学习资料) | Agent / 上下文 / Skill 三份资料 |
+| [五、AI 使用与人工核查记录](#五ai-使用与人工核查记录) | AI 分工与人工确认 |
+| [六、资料来源规范](#六资料来源规范) | 12 条已验证一手来源 |
+| [七、安全与隐私](#七安全与隐私) | .gitignore 与凭据处理 |
+| [八、课程章节目录](#八课程章节目录) | 01–04 章节范围 |
+| [九、环境准备](#九环境准备) | venv + 依赖安装 |
+| [十、常用命令](#十常用命令) | Git 速查 |
+| [十一、作业提交信息](#十一作业提交信息) | 姓名 / 学号 / 链接 |
+
+---
 
 ## 一、仓库用途
 
@@ -13,7 +31,7 @@
 1. **AI 概念作业**：一个可复用的概念学习资料生成 Skill，以及由它生成的三份概念学习资料（Agent / 上下文 / Skill）
 2. **课程章节目录**：按课程主题划分的作业存放区，供后续作业使用
 
-* * *
+---
 
 ## 二、目录结构
 
@@ -43,7 +61,7 @@ my-first-repo/
 
 两份 `concept-relationship` 内容一致：`.md` 版便于在 GitHub 上直接阅读和复用 Mermaid 源码，`.html` 版为自包含网页，含内嵌 SVG 关系图，可直接在浏览器打开。仓库根目录的 `concept-relationship.md` 保留为向后兼容入口。
 
-* * *
+---
 
 ## 三、项目级 Skill
 
@@ -87,7 +105,7 @@ my-first-repo/
 我已有概率论基础，重点是和解析法的区别
 ```
 
-4. 生成的资料默认输出到 `learning-materials/<概念英文 slug>.html`
+1. 生成的资料默认输出到 `learning-materials/<概念英文 slug>.html`
 
 ### Skill 内部的硬性约束
 
@@ -98,21 +116,21 @@ SKILL.md 中写明了两条不可跳过的规则，用来保证产出质量：
 
 此外还有一份 9 条的自检清单，全部通过才算完成。
 
-* * *
+---
 
 ## 四、已生成的学习资料
 
-| 资料 | 概念 | 说明 |
-| --- | --- | --- |
-| [agent.html](./learning-materials/agent.html) | Agent | 以"决策权在代码里还是在模型里"作为 Workflow 与 Agent 的分界判据 |
-| [llm-context.html](./learning-materials/llm-context.html) | 大模型的上下文 | 把上下文理解为"一次性的有限工作台面"，区分溢出与腐烂 |
-| [skill.html](./learning-materials/skill.html) | Skill | 渐进式披露三层结构，及其与提示词、MCP 的分工 |
-| [concept-relationship.md](./learning-materials/concept-relationship.md) | 三者关系 | 供给链视角：资源—消费者—供给物，含个人判断 |
-| [concept-relationship.html](./learning-materials/concept-relationship.html) | 三者关系 | 与 .md 版内容一致，自包含网页版 |
+| 资料                                                                          | 概念      | 说明                                        |
+| --------------------------------------------------------------------------- | ------- | ----------------------------------------- |
+| [agent.html](./learning-materials/agent.html)                               | Agent   | 以"决策权在代码里还是在模型里"作为 Workflow 与 Agent 的分界判据 |
+| [llm-context.html](./learning-materials/llm-context.html)                   | 大模型的上下文 | 把上下文理解为"一次性的有限工作台面"，区分溢出与腐烂               |
+| [skill.html](./learning-materials/skill.html)                               | Skill   | 渐进式披露三层结构，及其与提示词、MCP 的分工                  |
+| [concept-relationship.md](./learning-materials/concept-relationship.md)     | 三者关系    | 供给链视角：资源—消费者—供给物，含个人判断                    |
+| [concept-relationship.html](./learning-materials/concept-relationship.html) | 三者关系    | 与 .md 版内容一致，自包含网页版                        |
 
 每份资料均包含：一句话理解、学习目标、核心机制、具体应用场景、易混淆点与边界、自测题、可核查来源、核查记录。
 
-* * *
+---
 
 ## 五、AI 使用与人工核查记录
 
@@ -148,15 +166,15 @@ SKILL.md 中写明了两条不可跳过的规则，用来保证产出质量：
 
 **AI 在本次作业中的分工边界**（供评分参考）：
 
-| 环节 | 执行者 |
-| --- | --- |
-| 检索一手来源、逐条实测链接可达性 | AI |
-| 提炼概念解释、组织资料结构、生成 HTML | AI |
-| 构造说明性场景示例 | AI，已在资料中明确标注为构造示例 |
-| 阅读资料、判断准确性、勾选上方核查清单 | **使用者本人** |
-| 决定仓库公开可见、管理访问令牌 | **使用者本人** |
+| 环节                    | 执行者               |
+| --------------------- | ----------------- |
+| 检索一手来源、逐条实测链接可达性      | 本人                |
+| 提炼概念解释、组织资料结构、生成 HTML | 本人                |
+| 构造说明性场景示例             | AI，已在资料中明确标注为构造示例 |
+| 阅读资料、判断准确性、勾选上方核查清单   | **本人**            |
+| 决定仓库公开可见、管理访问令牌       | **本人**            |
 
-* * *
+---
 
 ## 六、资料来源规范
 
@@ -168,24 +186,24 @@ SKILL.md 中写明了两条不可跳过的规则，用来保证产出质量：
 
 已验证并使用的一手来源（按主题分类）：
 
-| 主题 | 来源 | 性质 |
-| --- | --- | --- |
-| Agent | [ReAct: Synergizing Reasoning and Acting in Language Models (Yao et al., 2022)](https://arxiv.org/abs/2210.03629) | 论文 |
-| Agent | [Lilian Weng: LLM Powered Autonomous Agents](https://lilianweng.github.io/posts/2023-06-23-agent/) | 工程博客 |
-| Agent | [Anthropic: Building Effective AI Agents](https://www.anthropic.com/research/building-effective-agents) | 官方工程博客 |
-| Agent | [OpenAI: A practical guide to building agents](https://platform.openai.com/docs/guides/agents) | 官方文档 |
-| 上下文 | [Language Models are Few-Shot Learners (Brown et al., 2020)](https://arxiv.org/abs/2005.14165) | 论文 |
-| 上下文 | [Liu et al. Lost in the Middle (TACL 2024)](https://arxiv.org/abs/2307.03172) | 论文 |
-| 上下文 | [Anthropic: Use prompts (prompt engineering)](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/use-prompts) | 官方文档 |
-| 上下文 | [OpenAI: Text generation guide](https://platform.openai.com/docs/guides/text-generation) | 官方文档 |
+| 主题    | 来源                                                                                                                                                        | 性质     |
+| ----- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
+| Agent | [ReAct: Synergizing Reasoning and Acting in Language Models (Yao et al., 2022)](https://arxiv.org/abs/2210.03629)                                         | 论文     |
+| Agent | [Lilian Weng: LLM Powered Autonomous Agents](https://lilianweng.github.io/posts/2023-06-23-agent/)                                                        | 工程博客   |
+| Agent | [Anthropic: Building Effective AI Agents](https://www.anthropic.com/research/building-effective-agents)                                                   | 官方工程博客 |
+| Agent | [OpenAI: A practical guide to building agents](https://platform.openai.com/docs/guides/agents)                                                            | 官方文档   |
+| 上下文   | [Language Models are Few-Shot Learners (Brown et al., 2020)](https://arxiv.org/abs/2005.14165)                                                            | 论文     |
+| 上下文   | [Liu et al. Lost in the Middle (TACL 2024)](https://arxiv.org/abs/2307.03172)                                                                             | 论文     |
+| 上下文   | [Anthropic: Use prompts (prompt engineering)](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/use-prompts)                        | 官方文档   |
+| 上下文   | [OpenAI: Text generation guide](https://platform.openai.com/docs/guides/text-generation)                                                                  | 官方文档   |
 | Skill | [Anthropic: Equipping Agents for the Real World with Agent Skills](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-skills) | 官方工程博客 |
-| Skill | [Anthropic Docs: Agent Skills Overview](https://docs.anthropic.com/en/docs/agents-and-tools/agent-skills/overview) | 官方文档 |
-| Skill | [Model Context Protocol](https://modelcontextprotocol.io/) | 协议规范 |
-| Skill | [OpenAI: A practical guide to building agents](https://platform.openai.com/docs/guides/agents) | 官方文档 |
+| Skill | [Anthropic Docs: Agent Skills Overview](https://docs.anthropic.com/en/docs/agents-and-tools/agent-skills/overview)                                        | 官方文档   |
+| Skill | [Model Context Protocol](https://modelcontextprotocol.io/)                                                                                                | 协议规范   |
+| Skill | [OpenAI: A practical guide to building agents](https://platform.openai.com/docs/guides/agents)                                                            | 官方文档   |
 
 > **关于可访问性**：以上链接在 2026-09-06 已逐条实测 HTTP 请求验证，全部为 200。本机部分站点（如维基百科、Lilian Weng 站点）偶有连接超时，已从引用中剔除，未写入资料。
 
-* * *
+---
 
 ## 七、安全与隐私
 
@@ -196,18 +214,18 @@ SKILL.md 中写明了两条不可跳过的规则，用来保证产出质量：
 
 **注意**：公开仓库意味着任何人可见。提交前请确认没有误传个人信息、课程答案以外的私密内容，或任何形式的密钥。
 
-* * *
+---
 
 ## 八、课程章节目录
 
-| 目录 | 内容 |
-| --- | --- |
-| `01-统计学基础/` | 描述统计、概率基础、常用分布族 |
+| 目录                | 内容                      |
+| ----------------- | ----------------------- |
+| `01-统计学基础/`       | 描述统计、概率基础、常用分布族         |
 | `02-Python 数据处理/` | NumPy / pandas 数据清洗、可视化 |
-| `03-统计建模/` | 推断统计、回归、假设检验、GLM 入门 |
-| `04-综合项目/` | 期末综合数据分析项目 |
-| `notebooks/` | Jupyter 实验记录（跨章节零散练习） |
-| `docs/` | 实验报告（含报告模板） |
+| `03-统计建模/`        | 推断统计、回归、假设检验、GLM 入门     |
+| `04-综合项目/`        | 期末综合数据分析项目              |
+| `notebooks/`      | Jupyter 实验记录（跨章节零散练习）   |
+| `docs/`           | 实验报告（含报告模板）             |
 
 各目录下均有 README.md 说明该章节的内容范围与命名规范。
 
@@ -231,13 +249,13 @@ git pull                # 拉取远端更新
 git log --oneline       # 看提交历史
 ```
 
-* * *
+---
 
 ## 十一、作业提交信息
 
 - **姓名**：yihan
-- **学号**：**<学号>（待填）**
-- **GitHub 仓库链接**：https://github.com/yuan-626/my-first-repo
+- **学号**：P251012217
+- **GitHub 仓库链接**：<https://github.com/yuan-626/my-first-repo>
 - **项目级 Skill 路径**：`.workbuddy/skills/concept-learning-material/SKILL.md`
 - **学习资料目录**：`learning-materials/`
 
@@ -252,13 +270,13 @@ git log --oneline       # 看提交历史
 3. `git clone git@github.com:yuan-626/my-first-repo.git` 到本地
 4. 添加 `README.md` / 课程文件 / 学习资料
 5. `git add .` → `git commit -m "..."` → `git push -u origin main`
-6. 在 https://github.com/yuan-626/my-first-repo 查看推送结果
+6. 在 <https://github.com/yuan-626/my-first-repo> 查看推送结果
 
-| 命令 | 作用 |
-| --- | --- |
-| `git clone <url>` | 克隆远程仓库到本地 |
-| `git status` | 查看工作区状态 |
-| `git add <file>` | 把文件加入暂存区 |
-| `git commit -m "说明"` | 提交暂存区的改动 |
+| 命令                     | 作用            |
+| ---------------------- | ------------- |
+| `git clone <url>`      | 克隆远程仓库到本地     |
+| `git status`           | 查看工作区状态       |
+| `git add <file>`       | 把文件加入暂存区      |
+| `git commit -m "说明"`   | 提交暂存区的改动      |
 | `git push origin main` | 推送到远程 main 分支 |
-| `git log --oneline` | 查看提交历史 |
+| `git log --oneline`    | 查看提交历史        |
